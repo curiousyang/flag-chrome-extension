@@ -1,0 +1,11 @@
+{
+  "name": "TO BE DETERMINED",
+  "version": "1.0.0",
+  "description": "gives random facts about countries",
+  "manifest_version": 3,
+  "author": "Yang Song, Huy Pham",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Interesting Facts abou Countries"
+  }
+}

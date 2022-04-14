@@ -1,0 +1,37 @@
+html,
+body {
+  width: 800px;
+  height: 430px;
+}
+
+.random-btn {
+  border: none;
+  background-color: #fce043;
+  background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
+  color: white;
+  font-weight: bold;
+}
+
+.search-btn {
+  font-weight: bold;
+}
+
+.fact {
+  font-weight: bold;
+}
+
+.card-title {
+  font-family: 'Pacifico', cursive;
+}
+
+.btn-group {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+}
+
+.card {
+  border: none;
+  background-color: #f2e3d5;
+}
