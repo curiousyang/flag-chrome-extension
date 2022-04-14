@@ -343,10 +343,7 @@ function showFacts(data) {
       }</p>
       <p class="card-text"><span class='fact'>Sub-region:</span> ${subRegion}</p>
 
-      <div class="input-group mb-3">
-
-  <input type="text" class="form-control country-input" placeholder="Search country" aria-label="Username" aria-describedby="basic-addon1">
-</div>
+      
 
         </div>
       </div>
@@ -367,14 +364,17 @@ const randomBtn = document.querySelector('.random-btn');
 //Event delegation
 searchBtn.addEventListener('click', (e) => {
   let countryInput = document.querySelector('.country-input');
+  if (countryInput.value.trim() === '') return;
   fetch(`https://restcountries.com/v3.1/name/{${countryInput.value}}`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
       document.querySelector('.first-child').remove();
+      countryInput.value = '';
       showFacts(data);
-    });
+    })
+    .catch((error) => console.log(error));
 });
 
 randomBtn.addEventListener('click', (e) => {
@@ -386,8 +386,10 @@ randomBtn.addEventListener('click', (e) => {
     })
     .then((data) => {
       document.querySelector('.first-child').remove();
+      console.log(randomCountry);
       showFacts(data);
-    });
+    })
+    .catch((error) => console.log(error));
 });
 
 // async function init() {
