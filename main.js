@@ -1,30 +1,279 @@
-//https://restcountries.com/v3.1/name/{name}
-//get country from user's input
-//array will hold a set countries' name, we will randomly pick an element from array and pass it to showFact
-const countries = [
-  'china',
-  'norway',
-  'sweden',
-  'italy',
-  'france',
-  'united states',
-  'united kingdom',
-  'south korea',
-  'north korea',
-  'australia',
-  'spain',
-  'denmark',
-  'egypt',
-  'south africa',
-  'ghana',
-  'somalia',
-  'haiti',
-  'argentina',
-  'uruguay',
-  'paraguay',
-  'germany',
-  'ukraine',
+const allCountries = [
+  'Uruguay',
+  'Paraguay',
+  'Gambia',
+  'Djibouti',
+  'Martinique',
+  'Guam',
+  'Georgia',
+  'United States',
+  'Belize',
+  'Mauritius',
+  'Lebanon',
+  'Saudi Arabia',
+  'Ecuador',
+  'Marshall Islands',
+  'Brazil',
+  'Uganda',
+  'Qatar',
+  'Timor-Leste',
+  'Mongolia',
+  'Chile',
+  'Liberia',
+  'Nauru',
+  'Réunion',
+  'Montserrat',
+  'Taiwan',
+  'Antarctica',
+  'Saint Pierre and Miquelon',
+  'Argentina',
+  'Togo',
+  'Austria',
+  'Grenada',
+  'Faroe Islands',
+  'Morocco',
+  'Anguilla',
+  'Palau',
+  'Northern Mariana Islands',
+  'Mauritania',
+  'Ukraine',
+  'China',
+  'Lesotho',
+  'Cyprus',
+  'DR Congo',
+  'Russia',
+  'Bangladesh',
+  'South Africa',
+  'Curaçao',
+  'Guatemala',
+  'Puerto Rico',
+  'Antigua and Barbuda',
+  'Israel',
+  'Guyana',
+  'Cayman Islands',
+  'Croatia',
+  'Iceland',
+  'Caribbean Netherlands',
+  'Sint Maarten',
+  'Namibia',
+  'Dominica',
+  'Gibraltar',
+  'Senegal',
+  'Saint Kitts and Nevis',
+  'Oman',
+  'Kuwait',
+  'Åland Islands',
+  'United States Virgin Islands',
+  'Bouvet Island',
+  'United Kingdom',
+  'Honduras',
+  'South Georgia',
+  'Cambodia',
+  'North Macedonia',
+  'Iran',
+  'Panama',
+  'Cook Islands',
+  'Andorra',
+  'Burundi',
+  'Trinidad and Tobago',
+  'Comoros',
+  'French Southern and Antarctic Lands',
+  'Kosovo',
+  'Nigeria',
+  'Poland',
+  'Niue',
+  'New Caledonia',
+  'Ethiopia',
+  'Germany',
+  'Azerbaijan',
+  'Netherlands',
+  'France',
+  'Nepal',
+  'Barbados',
+  'Jersey',
+  'India',
+  'Kyrgyzstan',
+  'South Sudan',
+  'Iraq',
+  'Italy',
+  'Cuba',
+  'Bhutan',
+  'Bahamas',
+  'Norway',
+  'Lithuania',
+  'Kenya',
+  'Pitcairn Islands',
+  'Sweden',
+  'Guadeloupe',
+  'Gabon',
+  'Macau',
+  'Guernsey',
+  'Rwanda',
+  'Syria',
+  'Canada',
+  'Algeria',
+  'British Indian Ocean Territory',
+  'Western Sahara',
+  'Isle of Man',
+  'Botswana',
+  'Kazakhstan',
+  'Venezuela',
+  'French Polynesia',
+  'Sudan',
+  'Wallis and Futuna',
+  'Slovakia',
+  'Saint Barthélemy',
+  'Christmas Island',
+  'Solomon Islands',
+  'Latvia',
+  'British Virgin Islands',
+  'Jamaica',
+  'Afghanistan',
+  'Serbia',
+  'Tajikistan',
+  'Tonga',
+  'Kiribati',
+  'Eritrea',
+  'Mali',
+  'Haiti',
+  'Vanuatu',
+  'Bosnia and Herzegovina',
+  'Vatican City',
+  'Benin',
+  'Svalbard and Jan Mayen',
+  'Samoa',
+  'Bolivia',
+  'Madagascar',
+  'São Tomé and Príncipe',
+  'Bahrain',
+  'Greece',
+  'Peru',
+  'Suriname',
+  'American Samoa',
+  'Niger',
+  'Thailand',
+  'Tuvalu',
+  'North Korea',
+  'Ivory Coast',
+  'Yemen',
+  'New Zealand',
+  'Armenia',
+  'Pakistan',
+  'Tokelau',
+  'Malawi',
+  'Ireland',
+  'Philippines',
+  'Czechia',
+  'Myanmar',
+  'Cocos (Keeling) Islands',
+  'Romania',
+  'Dominican Republic',
+  'Equatorial Guinea',
+  'Ghana',
+  'Malta',
+  'Turkey',
+  'Egypt',
+  'Mozambique',
+  'Mayotte',
+  'Belgium',
+  'Slovenia',
+  'Hungary',
+  'United Arab Emirates',
+  'Albania',
+  'Heard Island and McDonald Islands',
+  'Fiji',
+  'San Marino',
+  'Moldova',
+  'Estonia',
+  'Saint Vincent and the Grenadines',
+  'United States Minor Outlying Islands',
+  'Belarus',
+  'Sri Lanka',
+  'El Salvador',
+  'Australia',
+  'Bermuda',
+  'Nicaragua',
+  'Somalia',
+  'Turks and Caicos Islands',
+  'Micronesia',
+  'Palestine',
+  'Turkmenistan',
+  'Burkina Faso',
+  'Costa Rica',
+  'Vietnam',
+  'Cameroon',
+  'French Guiana',
+  'Eswatini',
+  'Zambia',
+  'Liechtenstein',
+  'Montenegro',
+  'Saint Lucia',
+  'Uzbekistan',
+  'Chad',
+  'Aruba',
+  'Denmark',
+  'Japan',
+  'Cape Verde',
+  'Switzerland',
+  'Hong Kong',
+  'Bulgaria',
+  'Jordan',
+  'Republic of the Congo',
+  'Laos',
+  'Norfolk Island',
+  'South Korea',
+  'Tunisia',
+  'Finland',
+  'Zimbabwe',
+  'Maldives',
+  'Singapore',
+  'Monaco',
+  'Angola',
+  'Malaysia',
+  'Luxembourg',
+  'Guinea',
+  'Libya',
+  'Spain',
+  'Indonesia',
+  'Seychelles',
+  'Brunei',
+  'Mexico',
+  'Saint Helena, Ascension and Tristan da Cunha',
+  'Sierra Leone',
+  'Central African Republic',
+  'Greenland',
+  'Colombia',
+  'Papua New Guinea',
+  'Falkland Islands',
+  'Portugal',
+  'Guinea-Bissau',
+  'Saint Martin',
+  'Tanzania',
 ];
+// const countries = [
+//   'china',
+//   'norway',
+//   'sweden',
+//   'italy',
+//   'france',
+//   'united states',
+//   'united kingdom',
+//   'south korea',
+//   'north korea',
+//   'australia',
+//   'spain',
+//   'denmark',
+//   'egypt',
+//   'south africa',
+//   'ghana',
+//   'somalia',
+//   'haiti',
+//   'argentina',
+//   'uruguay',
+//   'paraguay',
+//   'germany',
+//   'ukraine',
+// ];
 
 let html;
 let currentCountry = 'japan';
@@ -73,7 +322,7 @@ function showFacts(data) {
     <div class="row g-0">
       <div class="col-md-4 d-flex d-block align-items-center justify-content-center">
         <img src="${flagImgURL}" class="img-fluid w-60 align-middle rounded-start" alt="Flag Picture">
-        
+
       </div>
 
        <div class="col-md-4 d-flex d-block align-items-center justify-content-center">
@@ -93,8 +342,7 @@ function showFacts(data) {
         startOfWeek.charAt(0).toUpperCase() + startOfWeek.slice(1)
       }</p>
       <p class="card-text"><span class='fact'>Sub-region:</span> ${subRegion}</p>
-      
-      
+
       <div class="input-group mb-3">
 
   <input type="text" class="form-control country-input" placeholder="Search country" aria-label="Username" aria-describedby="basic-addon1">
@@ -107,8 +355,6 @@ function showFacts(data) {
   `;
 
   document.querySelector('body').insertAdjacentHTML('afterbegin', html);
-
-  console.log(body);
 }
 
 (async () => {
@@ -126,34 +372,38 @@ searchBtn.addEventListener('click', (e) => {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
-      console.log(document.querySelector('body'));
       document.querySelector('.first-child').remove();
       showFacts(data);
     });
 });
 
 randomBtn.addEventListener('click', (e) => {
-  let randomCountry = countries[Math.floor(Math.random() * countries.length)];
+  let randomCountry =
+    allCountries[Math.floor(Math.random() * allCountries.length)];
   fetch(`https://restcountries.com/v3.1/name/{${randomCountry}}`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
-      console.log(document.querySelector('body'));
       document.querySelector('.first-child').remove();
       showFacts(data);
     });
 });
 
-{
-  /* <div class="d-flex">
-  <a href="#" class="btn btn-success mb-3 me-2 search-btn">
-    Search
-  </a>
-  <a href="#" class="btn btn-dark mb-3 random-btn">
-    Go somewhere
-  </a>
-</div>; */
-}
+// async function init() {
+//   const res = await fetch(`https://restcountries.com/v3.1/all`);
+//   const data = await res.json();
+//   const result = [];
+//   const final = [];
+//   data.forEach((country) => {
+//     result.push(country.name.common);
+//   });
+
+//   for (let i = 200; i < result.length; ++i) {
+//     final.push(result[i]);
+//   }
+
+//   console.log(final);
+// }
+
+// init();

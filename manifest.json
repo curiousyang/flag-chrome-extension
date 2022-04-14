@@ -1,11 +1,11 @@
 {
   "name": "TO BE DETERMINED",
   "version": "1.0.0",
-  "description": "gives random facts about countries",
+  "description": "Display countries' flags and their coat of arms along with random facts",
   "manifest_version": 3,
   "author": "Yang Song, Huy Pham",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Interesting Facts abou Countries"
+    "default_title": "Interesting Facts about Countries"
   }
 }
