@@ -331,16 +331,14 @@ function showFacts(data) {
 
       <div class="col-md-4">
         <div class="card-body" ms-2>
-          <h2 class="card-title mb-3 ms-3">${
-            countryName.charAt(0).toUpperCase() + countryName.slice(1)
-          }</h2>
+          <h2 class="card-title mb-3 ms-3">${countryName.charAt(0).toUpperCase() + countryName.slice(1)
+    }</h2>
           <p class="card-text"><span class='fact'> ${nativeName}</span></p>
       <p class="card-text"><span class='fact'>Capital:</span> ${capitalCity}</p>
       <p class="card-text"><span class='fact'>Language:</span> ${majorLanguage}</p>
       <p class="card-text"><span class='fact'>Population:</span> ${population}   </p>
-      <p class="card-text"><span class='fact'>Start of Week:</span> ${
-        startOfWeek.charAt(0).toUpperCase() + startOfWeek.slice(1)
-      }</p>
+      <p class="card-text"><span class='fact'>Start of Week:</span> ${startOfWeek.charAt(0).toUpperCase() + startOfWeek.slice(1)
+    }</p>
       <p class="card-text"><span class='fact'>Sub-region:</span> ${subRegion}</p>
 
       
@@ -365,6 +363,14 @@ const randomBtn = document.querySelector('.random-btn');
 searchBtn.addEventListener('click', (e) => {
   let countryInput = document.querySelector('.country-input');
   if (countryInput.value.trim() === '') return;
+  let lowerAllCountries = [];
+  allCountries.forEach(element => {
+    lowerAllCountries.push(element.toLowerCase());
+  });
+  if (!lowerAllCountries.includes(countryInput.value.trim().toLowerCase())) {
+    alert('Sorry, we cannot find your country. Please try again.');
+    return;
+  };
   fetch(`https://restcountries.com/v3.1/name/{${countryInput.value}}`)
     .then((res) => {
       return res.json();
